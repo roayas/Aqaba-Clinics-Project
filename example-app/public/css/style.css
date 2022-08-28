@@ -395,11 +395,71 @@ a:focus {
 .navbar-brand {
   margin-top: 10px;
 }
+#navbar{
+ 
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%; 
+  background:transparent;
+  background-color: rgba(28, 27, 56, 0.7);
+  color:#fff;
+ 
+}
+.login100-form-title {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 70px 15px 74px 15px;
+}
+  .login100-form-title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(54,84,99,0.5);
+  border-radius: 10px;
+}
 
+/* .dropdown-menu li a{
+  color:#000
+  
+} */
+.navbar a{
+  color:#fff;
+  margin-right: 10px;
+ font-size: large;
+   
+}
+.bb{
+  border: 2px solid #53c1b0;
+  width: 100%;
+}
+.dd{
+  width: 100%;
+  border: 2px solid #53c1b0;
+  background-color: #53c1b0;
+}
 .dropdown .dropdown-menu {
   position: absolute;
   display: block;
   background: #fff;
+
   min-width: 240px;
   top: 130%;
   left: 0;
@@ -465,7 +525,7 @@ a:focus {
   position: relative;
   overflow: hidden;
   background: #fff;
-  background: url("../img/4.jpg") no-repeat;
+  background: url("../img/bg/slider-bg-1.jpg") no-repeat;
   background-size: cover;
   min-height: 550px;
 }
@@ -479,7 +539,7 @@ a:focus {
   line-height: 1.2;
   letter-spacing: -1.2px;
   text-transform: capitalize;
-  color: #1c1b38;
+  color: rgb(28, 27, 56);
 }
 
 .letter-spacing {
@@ -585,7 +645,7 @@ a:focus {
 .appoinment-form .form-control {
   background: #f4f9fc;
   height: 55px;
-  border-color: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .appoinment-form textarea.form-control {
@@ -610,6 +670,10 @@ a:focus {
 }
 
 .feature-item .feature-icon i {
+  font-size: 50px;
+  color: #1c1b38;
+}
+ .feature-icon  {
   font-size: 50px;
   color: #1c1b38;
 }
@@ -1492,3 +1556,49 @@ a:focus {
 /* nav style */
 
 /*# sourceMappingURL=maps/style.css.map */
+
+
+
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+.form-group label{
+color:#000;
+padding-left: 10px;
+}
+.bord{
+background-color:#53c1b0;
+color:#fff;
+/* border: 3px solid #1c1b38; */
+}
+.line{
+border-left: 1px solid;
+  height: 60vh;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .line {
+    border: none;
+    height: 0;
+   }
+}
+@media only screen and (max-width: 768px) {
+  #navbar  {
+    position: static;
+   
+  }
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: "Exo", sans-serif;
+  font-weight: 700;
+  color: #222;
+}

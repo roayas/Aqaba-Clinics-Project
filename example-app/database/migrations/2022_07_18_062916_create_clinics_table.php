@@ -18,9 +18,10 @@ class CreateClinicsTable extends Migration
             $table->string('clinic_name');
             $table->string('clinic_email')->unique();
             $table->integer('clinic_phone');
-            $table->string('clinic_cat');
+            $table->string('cat_id');
             $table->string('clinic_img')->nullable();
             $table->integer('commercial_register')->nullable();
+            $table->string('clinic_short_des')->nullable();
             $table->text('clinic_des')->nullable();
             $table->string('clinic_bdes')->nullable();
             $table->time('time_start')->nullable();

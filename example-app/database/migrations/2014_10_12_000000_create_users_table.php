@@ -20,12 +20,12 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('user_phone')->nullable();
+            $table->string('user_phone')->nullable();
             $table->date('user_dob')->nullable();
-            $table->integer('user_img')->nullable();
+            $table->string('img')->nullable();
             $table->enum('gender', ['Male','Female'])->nullable();
             $table->enum('marital', ['single','married'])->nullable();
-            $table->integer('user_id_num')->unique()->nullable();
+            $table->string('user_id_num')->unique()->nullable();
             $table->decimal('height', $precision = 8, $scale = 2)->nullable();
             $table->decimal('weight', $precision = 8, $scale = 2)->nullable();
             $table->enum('blood_type',['A+','A-','B+','B-','AB','O+','O-'])->nullable();

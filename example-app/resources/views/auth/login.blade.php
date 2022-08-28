@@ -3,21 +3,37 @@
 
 @section('link')
 <!-- <link rel="stylesheet" href=" {{ asset('css/home.css') }} "> -->
+<style>
+
+
+</style>
 @endsection
 
 @section('content')
+<div aria-label="breadcrumb" class="main-breadcrumb " style='opacity: 0;'>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/home">Home</a></li>
+              
+              <li class="breadcrumb-item active" aria-current="page">Book/login</li>
+            </ol>
+          </div>
+<div >
+<div class='mt-5'></div>
+</div>
 
-<div class="container">
+<div class="container mt-5 mb-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <div class="col-md-8 rounded">
+            <div class="card ">
+                <div class="card-header h1 text-center rounded login100-form-title" style=' background-image: url("img/4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; height: 150px;'><span class='text-white'>{{ __('Login') }}</span></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
+                        <div class="row mb-3 mt-5">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
@@ -45,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <!-- <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -55,19 +71,19 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-8 offset-md-4 my-3">
+                                <button type="submit" class="btn btn-main" style='width: 45%;'>
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
+                                <!-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif -->
                             </div>
                         </div>
                     </form>

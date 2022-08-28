@@ -6,12 +6,21 @@
 @endsection
 
 @section('content')
-
-<div class="container">
+<div aria-label="breadcrumb" class="main-breadcrumb " style='opacity: 0;'>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/home">Home</a></li>
+              
+              <li class="breadcrumb-item active" aria-current="page">Book/login</li>
+            </ol>
+          </div>
+<div >
+<div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 rounded">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header h1 text-center rounded login100-form-title" style=' background-image: url("img/4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; height: 150px;'><span class='text-white'>{{ __('Register') }}</span></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -69,7 +78,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-main">
                                     {{ __('Register') }}
                                 </button>
                             </div>

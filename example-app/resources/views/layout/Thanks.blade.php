@@ -7,6 +7,21 @@
 @endsection
 
 @section('content')
+<div aria-label="breadcrumb" class="main-breadcrumb " style='opacity: 0;'>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/home">Home</a></li>
+              
+              <li class="breadcrumb-item active" aria-current="page">Book/First Step/Second Step/Last Step</li>
+            </ol>
+          </div>
+          <div aria-label="breadcrumb" class="main-breadcrumb " style='opacity: 0;'>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/home">Home</a></li>
+              
+              <li class="breadcrumb-item active" aria-current="page">Book/First Step/Second Step/Last Step</li>
+            </ol>
+          </div>
+       
 <section class="section confirmation">
   <div class="container">
     <div class="row justify-content-center">

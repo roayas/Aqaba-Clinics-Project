@@ -13,14 +13,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-md-12 col-xl-7">
-				<div class="block">
-					<div class="divider mb-3"></div>
+				<div class="block ">
+					<div class="divider mb-3  " style='margin-top:60px'></div>
 					<span class="text-uppercase text-sm letter-spacing ">Total Health care solution</span>
 					<h1 class="mb-3 mt-3">Your most trusted health partner</h1>
 					
 					<p class="mb-4 pr-5 text-black">Welcome to Aqaba Clinics, where you can book your medical appointment in the best clinics in Aqaba with the click of a button.</p>
 					<div class="btn-container ">
-						<a href="{{ url('') }}" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Make appoinment <i class="icofont-simple-right ml-2  "></i></a>
+						<a href="{{ url('/book1') }}" class="btn btn-main-2 btn-icon btn-round-full">Make appoinment <i class="icofont-simple-right ml-2  "></i></a>
 					</div>
 				</div>
 			</div>
@@ -39,7 +39,7 @@
 						<span>24 Hours Service</span>
 						<h4 class="mb-3">Online Appointment</h4>
 						<p class="mb-4">Get your appointment at any time you need and in any specialty you want.</p>
-						<a href="{{ url('appoinment.html') }}" class="btn btn-main btn-round-full">Make a appointment</a>
+						<a href="{{ url('/book1') }}" class="btn btn-main btn-round-full">Make a appointment</a>
 					</div>
 				
 					<div class="feature-item mb-5 mb-lg-0">
@@ -62,7 +62,7 @@
 						<span>Do you have a clinic?</span>
 						<h4 class="mb-3">Join Us</h4>
 						<p>Add your clinic to our reliable and professional website and introduce technology to your clinic.</p>
-						<a href="{{ url('appoinment.html') }}" class="btn btn-main btn-round-full">Join Now</a>
+						<a href="{{ url('') }}" class="btn btn-main btn-round-full">Join Now</a>
 					</div>
 				</div>
 			</div>
@@ -103,14 +103,14 @@
 				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="counter-stat">
 						<i class="icofont-doctor"></i>
-						<span class="h3">58</span>k
-						<p>Happy People</p>
+						<span class="h3">{{$data}}</span>+
+						<p>Happy Users</p>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="counter-stat">
 						<i class="icofont-flag"></i>
-						<span class="h3">700</span>+
+						<span class="h3">{{$data3}}</span>+
 						<p>Join Clink</p>
 					</div>
 				</div>
@@ -118,7 +118,7 @@
 				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="counter-stat">
 						<i class="icofont-badge"></i>
-						<span class="h3">40</span>+
+						<span class="h3">{{$data2}}</span>+
 						<p>Expert Doctors</p>
 					</div>
 				</div>
@@ -224,86 +224,7 @@
 </section>
 
 
-<!-- <section class="section appoinment">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-6 ">
-				<div class="appoinment-content">
-					<img src="{{ asset('/img/about/img-3.jpg') }}" alt="" class="img-fluid">
-					<div class="emergency">
-						<h2 class="text-lg"><i class="icofont-phone-circle text-lg"></i>+23 345 67980</h2>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-10 ">
-				<div class="appoinment-wrap mt-5 mt-lg-0">
-					<h2 class="mb-2 title-color">Book appoinment</h2>
-					<p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>
-					     <form id="#" class="appoinment-form" method="post" action="#">
-                    <div class="row">
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>Choose Department</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                  <option>Select Doctors</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
-                                </select>
-                            </div>
-                        </div>
 
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="time" id="time" type="text" class="form-control" placeholder="Time">
-                            </div>
-                        </div>
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="phone" id="phone" type="Number" class="form-control" placeholder="Phone Number">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-2 mb-4">
-                        <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
-                    </div>
-
-                    <a class="btn btn-main btn-round-full" href="{{ url('appoinment.html') }}" >Make Appoinment <i class="icofont-simple-right ml-2  "></i></a>
-                </form>
-            </div>
-			</div>
-		</div>
-	</div>
-</section> -->
 <section class="section team">
 	<div class="container">
 		<div class="row justify-content-center">
@@ -317,50 +238,22 @@
 		</div>
 
 		<div class="row justify-content-center">
+		@foreach($data4 as $i)
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<div class="team-block mb-5 mb-lg-0">
-					<img src="{{ asset('/img/team/1.jpg') }}" alt="" class="img-fluid w-100">
+					<img src="{{ asset('storage/img/'.$i->doctor_img) }}" alt="" class="img-fluid w-100">
 
 					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="{{ url('doctor-single.html') }}">John Marshal</a></h4>
-						<p>Internist, Emergency Physician</p>
+						<h4 class="mt-4 mb-0"><a href="{{ url('doctor-single.html') }}">{{$i->doctor_name}}</a></h4>
+						<p>{{$i->cat_name}}</p>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="team-block mb-5 mb-lg-0">
-					<img src="{{ asset('/img/team/2.jpg') }}" alt="" class="img-fluid w-100">
+		@endforeach
 
-					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="{{ url('doctor-single.html') }}">Marshal Root</a></h4>
-						<p>Surgeon, Сardiologist</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="team-block mb-5 mb-lg-0">
-					<img src="{{ asset('/img/team/3.jpg') }}" alt="" class="img-fluid w-100">
-
-					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="{{ url('doctor-single.html') }}">Siamon john</a></h4>
-						<p>Internist, General Practitioner</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="team-block">
-					<img src="{{ asset('/img/team/4.jpg') }}" alt="" class="img-fluid w-100">
-
-					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="{{ url('doctor-single.html') }}">Rishat Ahmed</a></h4>
-						<p>Orthopedic Surgeon</p>
-					</div>
-				</div>
-			</div> 
 			<div class="col-lg-3 col-md-6 col-sm-6 mt-3">
-			<a href="{{ url('/about') }}" class="btn btn-main-2 btn-round-full btn-icon">See All<i class="icofont-simple-right ml-3"></i></a>
+			<a href="{{ url('/doctors') }}" class="btn btn-main-2 btn-round-full btn-icon">See All<i class="icofont-simple-right ml-3"></i></a>
 			</div>
 		</div>
 	</div>

@@ -17,8 +17,9 @@ class CreateEducationTable extends Migration
             $table->bigIncrements('edu_id');
             $table->integer('doctor_id');
             $table->string('edu_name');
-            $table->date('edu_from');
-            $table->date('edu_to');
+            $table->text('edu_dse');
+            $table->year('edu_from');
+            $table->year('edu_to');
             $table->timestamps();
         });
     }

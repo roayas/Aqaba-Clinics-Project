@@ -1,135 +1,126 @@
 @extends('layout.master')
-@section ('title', 'Booking')
+@section ('title', 'Book3')
 
 @section('link')
-<!-- <link rel="stylesheet" href=" {{ asset('css/home.css') }} "> -->
+<link rel="stylesheet" href=" {{ asset('css/user.css') }} ">
 @endsection
 
 @section('content')
 
+<!-- <p>{{  Session::get('time')}}</p> -->
+<div aria-label="breadcrumb" class="main-breadcrumb " style='opacity: 0;'>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/home">Home</a></li>
+              
+              <li class="breadcrumb-item active" aria-current="page">Book/First Step/Second Step/Last Step</li>
+            </ol>
+          </div>
 
-<section class="page-title bg-1">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-          <span class="text-white">Book your Seat</span>
-          <h1 class="text-capitalize mb-5 text-lg">Appoinment</h1>
-
-          <!-- <ul class="list-inline breadcumb-nav">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-            <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item"><a href="#" class="text-white-50">Book your Seat</a></li>
-          </ul> -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <div aria-label="breadcrumb" class="main-breadcrumb mt-5 " >
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/home">Home</a></li>
+              
+              <li class="breadcrumb-item active" aria-current="page">Book/First Step/Second Step/Last Step</li>
+            </ol>
+          </div>
 
 <section class="appoinment section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
-          <div class="mt-3">
-            <div class="feature-icon mb-3">
-              <i class="icofont-support text-lg"></i>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mt-3">
+                    <div class="feature-icon  ">
+                       <span class="bord p-4"> 3</span> <span class="h3">Last Step</span>
+                    </div>
+                  <div>
+                    <div class="line ml-3 mt-3 "></div></div>
+                </div>
             </div>
-             <span class="h3">Call for an Emergency Service!</span>
-              <h2 class="text-color mt-3">+962 7763 65265</h2>
-          </div>
-      </div>
 
-      <div class="col-lg-8">
-           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-            <h2 class="mb-2 title-color">Book an appoinment</h2>
-            <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>
-               <form id="#" class="appoinment-form" method="post" action="#">
-                    <div class="row">
-                         <div class="col-lg-6">
-                            <div class="form-group">
+            <div class="col-lg-8">
+                <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5" id='book'>
+                    <h2 class="mb-2 title-color">Book an appoinment</h2>
+                    <p class="mb-4">Complete the personal information details</p>
+                    <form id="#" class="appoinment-form" method="post" action="/book3">
+                    @csrf
+                
+                        <div class="row">
+                        <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="name">First Name</label>
+                                    <input name="user_name" id="name" type="text" class="form-control" 
+                                    value="@if(Session::get('user_name')) {{Session::get('user_name')}}
+                                    @elseif( Session::get('loginin') ) {{  Auth::user()->name }} @endif">
+                                    @error('user_name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="name">Last Name</label>
+                                    <input name="user_lname" id="name" type="text" class="form-control" 
+                                    value="@if(Session::get('user_lname')) {{Session::get('user_lname')}} @elseif(  Session::get('loginin') ) {{  Auth::user()->user_lname }} @endif">
+                                    @error('user_lname')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="ID">ID Number</label>
+                                    <input name="user_id_num" id="ID" type="text" class="form-control" value="@if(Session::get('user_id_num')) {{Session::get('user_id_num')}} @elseif(  Session::get('loginin') ) {{  Auth::user()->user_id_num }} @endif">
+                                    @error('user_id_num')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input name="user_phone" id="phone" type="text" class="form-control" value="@if(Session::get('user_phone')) {{Session::get('user_phone')}} @elseif(  Session::get('loginin') ) {{  Auth::user()->user_phone }} @endif">
+                                    @error('user_phone')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                          
+                
+                            
+
+                       
+
+                            
+                            
                            
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>Choose Department</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
-                                </select>
-                            </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                           
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                  <option>Select Doctors</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
-                                </select>
-                            </div>
+                        <div class="form-group mb-4">
+                            <label for="message">Any Note or medical history
+                                You want to tell us about</label>
+                            <textarea name="note" id="message" class="form-control" rows="6" >@if(Session::get('note')) {{Session::get('note')}}  @endif</textarea>
                         </div>
+                        <div class='text-end'>
+                        <a class="btn  btn-main text-white btn-round-full mr-3"
+                        href="/book1"><i class="icofont-simple-left mr-2"></i>Back
+                                </a>
+                            <button class="btn btn-main btn-round-full" href="{{ url('confirmation.html') }}">Make
+                                Appoinment</button>
+                        </div>
+                    </form>
+                    <div style="text-align:center;margin-top:40px;">
+                        <span style=' background-color: #53c1b0;' class="step"></span>
+                        <span style=' background-color: #53c1b0;' class="step"></span>
+                        <span style=' opacity: 1' class="step"></span>
 
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                            <label for="date">Date of Birth</label>
-                                <input name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                        <label for="time">Time</label>
-                            <div class="form-group">
-                                <input name="time" id="time" type="text" class="form-control" placeholder="Time">
-                            </div>
-                        </div>
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                            <label for="name">Full Name</label>
-                                <input name="name" id="name" type="text" class="form-control" >
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                              <label for="phone">Phone Number</label>
-                                <input name="phone" id="phone" type="Number" class="form-control" >
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                              <label for="ID">ID Number</label>
-                                <input name="ID" id="ID" type="Number" class="form-control" p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                              <label for="hi">Health Insurance</label>a
-                                <input name="hi" id="hi" type="Number" class="form-control" placeholder="Phone Number">
-                            </div>
-                        </div>
                     </div>
-                    <div class="form-group-2 mb-4">
-                      <label for="message">Any Note or medical history
-                       You want to tell us about</label>
-                        <textarea name="message" id="message" class="form-control" rows="6"></textarea>
-                    </div>
-
-                    <a class="btn btn-main btn-round-full" href="{{ url('confirmation.html') }}">Make Appoinment<i class="icofont-simple-right ml-2"></i></a>
-                </form>
+                </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
+    </div>
 </section>
 
 @endsection

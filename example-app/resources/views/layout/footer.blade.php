@@ -5,14 +5,14 @@
 			<div class="col-lg-4 mr-auto col-sm-6">
 				<div class="widget mb-5 mb-lg-0">
 					<div class="logo mb-4">
-						<img src="{{asset('img/logo.png')}}" alt="" class="img-fluid" style="margin-left: -50px;">
+						<img src="{{asset('img/alogo.png')}}" alt="" class="img-fluid" >
 					</div>
 					<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
 
 					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="https://web.facebook.com/roaa.yaseen.9/" target='_blank'><i class="icofont-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/rooayaseen" target='_blank'><i class="icofont-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.linkedin.com/in/roayaseen/" target='_blank'><i class="icofont-linkedin"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -23,12 +23,12 @@
 					<div class="divider mb-4"></div>
 
 					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Ear, Nose and Throat </a></li>
-						<li><a href="#">Dermatology specialty</a></li>
-						<li><a href="#">Dental </a></li>
-						<li><a href="#">Gynecology</a></li>
-						<li><a href="#">Children's specialty</a></li>
-						<li><a href="#">Orthopedic specialty</a></li>
+						<li><a href="/clinics">Ear, Nose and Throat </a></li>
+						<li><a href="/clinics">Dermatology specialty</a></li>
+						<li><a href="/clinics">Dental </a></li>
+						<li><a href="/clinics">Gynecology</a></li>
+						<li><a href="/clinics">Children's specialty</a></li>
+						<li><a href="/clinics">Orthopedic specialty</a></li>
 					</ul>
 				</div>
 			</div>
@@ -39,12 +39,12 @@
 					<div class="divider mb-4"></div>
 
 					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Clinics</a></li>
-						<li><a href="#">Company Support </a></li>
-						<li><a href="#">Join Us</a></li>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Contact Us</a></li>
+						<li><a href="/home">Home</a></li>
+						<li><a href="/clinics">Clinics</a></li>
+						<li><a href="/doctors">Doctors</a></li>
+						<li><a href="">Join Us</a></li>
+						<li><a href="/about">About Us</a></li>
+						<li><a href="/contact">Contact Us</a></li>
 					</ul>
 				</div>
 			</div>
@@ -73,24 +73,7 @@
 			</div>
 		</div>
 		
-		<div class="footer-btm py-4 mt-5">
-			<div class="row align-items-center justify-content-center">
-				<div class="col-lg-12">
-					<div class="copyright">
-						&copy; Copyright Reserved to <span class="text-color">AQABA CLINICS</span> by <a href="" target="_blank">Ro'a Yaseen</a>
-					</div>
-				</div>
-				
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4">
-					<a class="backtop js-scroll-trigger" href="#top">
-						<i class="icofont-long-arrow-up"></i>
-					</a>
-				</div>
-			</div>
-		</div>
+		
 	</div>
 </footer>
 
