@@ -28,7 +28,7 @@ protected function authenticated(Request $request, $user)
 {
 if ( Session::get('path') ) {// do your magic here
     Session::put('loginin', true);
-    return redirect('book');
+    return redirect('book3');
 }
 Session::put('loginin', true);
  return redirect('/home');

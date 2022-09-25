@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section ('title', 'About Us')
+@section ('title', 'register')
 
 @section('link')
 <!-- <link rel="stylesheet" href=" {{ asset('css/home.css') }} "> -->
@@ -16,7 +16,7 @@
 <div >
 <div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-8 rounded">
+        <div class="col-md-8 rounded mt-5">
             <div class="card">
                 <div class="card-header h1 text-center rounded login100-form-title" style=' background-image: url("img/4.jpg");
   background-repeat: no-repeat;
@@ -82,6 +82,9 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+                            <div class="mt-4 text-center ">
+                        <h6> Already have an account?<a style='color:#53c1b0' href="/login">Login </a></h6>
+                    </div>
                         </div>
                     </form>
                 </div>

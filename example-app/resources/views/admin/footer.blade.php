@@ -2,7 +2,8 @@
          </div>
       </div>
       <!-- jQuery -->
-      <!-- <script src="{{ asset('css/admin/js/jquery.min.js') }}"></script> -->
+
+
       <script src="{{ asset('css/admin/js/popper.min.js') }}"></script>
       <script src="{{ asset('css/admin/js/bootstrap.min.js') }}"></script>
       <!-- wow animation -->

@@ -8,6 +8,7 @@ use App\Models\Clinic;
 use App\Models\Services;
 use App\Models\Category;
 use App\Models\Doctor;
+use App\Models\Insurancea;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -25,14 +26,15 @@ class ViewController extends Controller
         $data3=$data3->count(); 
         $data4=DB::table('doctors')->limit(4)->get();
         $data5=Category::all();
-        return view('layout.home',compact('data','data2','data3','data4','data5'));
+        $data6=Insurancea::all();
+        return view('layout.home',compact('data','data2','data3','data4','data5','data6'));
     }
     
     public function about()
     {
         return view('layout.about');
     }
-    public function book()
+    public function book3()
     {
         return view('layout.booking');
     }
@@ -111,7 +113,7 @@ class ViewController extends Controller
     public function user()
     {
         $id = Auth::user()->id;
-        $data = DB::table('time_schedules')->where('user_id', $id) ->where('time_date' , '>=' , Carbon::now()->toDateTimeString())->join('clinics', 'time_schedules.clinic_id', '=', 'clinics.id',)->select('time_schedules.clinic_id','time_schedules.time_date','time_schedules.time_detail','time_schedules.id','time_schedules.is_cancel_user','time_schedules.is_cancel_admin','clinics.clinic_name')->get();
+        $data = DB::table('books')->where('user_id', $id) ->where('time_book' , '>=' , Carbon::now()->toDateTimeString())->join('clinics', 'books.clinic_id', '=', 'clinics.id',)->select('books.clinic_id','books.time_book','books.id','books.is_cancel_user','books.is_cancel_admin','clinics.clinic_name')->get();
        ;
         return view('layout.userpage',compact('data'));
     }
@@ -119,15 +121,22 @@ class ViewController extends Controller
     public function book2($clinic,$date)
     {
         $data = Clinic::find($clinic);
-        $data2=DB::table('time_schedules')
+        $data2=DB::table('books')
         ->where('time_date', $date )-> where('clinic_id', $clinic)
         ->get();
+        //  dd($data2); 
+        $data3 = DB::table('days_offs')->where('clinic_id', $clinic) ->where('date' , '>=' , Carbon::now()->toDateTimeString())->get();
         // dd($data2);
-        return view('layout.book2', compact('data','data2'));
+        return view('layout.book2', compact('data','data2','data3'));
     }
 
     function login(){
         
+    }
+
+    public function changePassword()
+    {
+        return view('layout.changePassworde');
     }
 }
 

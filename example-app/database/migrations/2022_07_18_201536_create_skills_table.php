@@ -14,7 +14,7 @@ class CreateSkillsTable extends Migration
     public function up()
     {
         Schema::create('skills', function (Blueprint $table) {
-            $table->bigIncrements('skill_id');
+            $table->bigIncrements('id');
             $table->integer('doctor_id');
             $table->string('skill_name');
             $table->timestamps();

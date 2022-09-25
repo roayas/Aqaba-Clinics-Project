@@ -3,6 +3,7 @@
 
 @section('link')
 <link rel="stylesheet" href=" {{ asset('css/user.css') }} ">
+
 @endsection
 
 
@@ -31,7 +32,7 @@
 <div class="container mt-5">
     <div class="main-body">
 
-    @if (session('message1'))
+        @if (session('message1'))
         <div class="alert alert-success mb-5 " role="alert">
             {{session('message1')}}
         </div>
@@ -61,6 +62,10 @@
                                     <form action="/added" method="post" enctype="multipart/form-data" id="editPic">
                                         @csrf
                                         <input type="file" name="img" required style="font-size:small;">
+                                        @error('img')
+                                                                        <div class="alert alert-danger">{{ $message }}
+                                                                        </div>
+                                                                        @enderror
                                         <input type="submit" name="addItem" value="edit" style="font-size:small;">
                                     </form>
                                 </div>
@@ -162,102 +167,102 @@
                 <div class="card mb-3">
                     <h4 class='p-3'>Update your medical information</h4>
                     <form action="/updateusermed" method="post" class='p-3'>
-                    @csrf
+                        @csrf
                         <div class="form-group">
                             <!-- Gender('Male', 'Female') -->
                             <label for="inputAddress"> ID Number</label>
                             <input type="number" class="form-control" id="inputAddress"
                                 value="{{  Auth::user()->user_id_num }}" name='user_id_num'>
-                                @error('user_id_num')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                            @error('user_id_num')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputAddress2">Date of birth</label>
                                 <input type="date" class="form-control" id="inputAddress2"
                                     value="{{  Auth::user()->user_dob}}" name='user_dob'>
-                                    @error('user_dob')
+                                @error('user_dob')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                           
+
                             <div class="form-group col-md-6">
                                 <p>Gender</p>
                                 <div class="form-check form-check-inline">
-                                  @if(Auth::user()->gender =='Female')
+                                    @if(Auth::user()->gender =='Female')
                                     <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
                                         value="Female" checked>
-                                        @else
-                                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
-                                        value="Female" >
-                                        @endif
+                                    @else
+                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
+                                        value="Female">
+                                    @endif
                                     <label class="form-check-label" for="inlineRadio2">Female</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                @if(Auth::user()->gender =='Male')
+                                    @if(Auth::user()->gender =='Male')
                                     <input class="form-check-input" type="radio" name="gender" value="Male" checked>
                                     @else
-                                    <input class="form-check-input" type="radio" name="gender" value="Male" >
+                                    <input class="form-check-input" type="radio" name="gender" value="Male">
                                     @endif
                                     <label class="form-check-label" for="inlineRadio1">Male</label>
                                 </div>
                             </div>
-                          
+
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Weight</label>
                                 <input type="text" class="form-control" id="inputEmail4"
-                                    value="{{  Auth::user()->weight}}"  name='weight'>
-                                    @error('weight')
+                                    value="{{  Auth::user()->weight}}" name='weight'>
+                                @error('weight')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                          
+
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Height</label>
                                 <input type="text" class="form-control" id="inputPassword4" name='height'
                                     value="{{  Auth::user()->height}}">
-                                    @error('height')
+                                @error('height')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                           
+
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
+                       
+                            <div class="form-group col-md-12">
 
                                 <p>Marital</p>
                                 <div class="form-check form-check-inline">
-                                @if(Auth::user()->marital =='single')
+                                    @if(Auth::user()->marital =='single')
                                     <input class="form-check-input" type="radio" name="marital" id="inlineRadio2"
                                         value="single" checked>
-                                        @else
-                                        <input class="form-check-input" type="radio" name="marital" id="inlineRadio2"
-                                        value="single" >
-                                        @endif
+                                    @else
+                                    <input class="form-check-input" type="radio" name="marital" id="inlineRadio2"
+                                        value="single">
+                                    @endif
                                     <label class="form-check-label" for="inlineRadio2">single</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                @if(Auth::user()->marital =='married')
+                                    @if(Auth::user()->marital =='married')
                                     <input class="form-check-input" type="radio" name="marital" value="married" checked>
                                     @else
-                                    <input class="form-check-input" type="radio" name="marital" value="married" >
+                                    <input class="form-check-input" type="radio" name="marital" value="married">
                                     @endif
                                     <label class="form-check-label" for="inlineRadio1">married</label>
 
                                 </div>
                             </div>
-                         
-                            <div class="form-group col-md-6">
+
+                            <div class="form-group col-md-12">
                                 <label for="inputState">Blood Type</label>
                                 <select id="inputState" class="form-control" name='blood_type'>
-                                @if(Auth::user()->blood_type)
-                                <option selected disable>{{Auth::user()->blood_type}}</option>
-                                @else
+                                    @if(Auth::user()->blood_type)
+                                    <option selected disable>{{Auth::user()->blood_type}}</option>
+                                    @else
                                     <option selected disable>Choose...</option>
                                     @endif
                                     <option value='A+'>A+</option>
@@ -269,11 +274,12 @@
                                     <option value='O-'>O-</option>
                                 </select>
                             </div>
-                           
-                            </div>
 
-                            <button type='submit' class="btn " style="background-color: #008E89; color:white;" >Update</button>
-                         
+                       
+
+                        <button type='submit' class="btn mb-3 mt-3 "
+                            style="background-color: #008E89; color:white;">Update</button>
+
                     </form>
                 </div>
             </div>
@@ -284,36 +290,38 @@
                         <div class="card-body">
                             <h6 class="d-flex align-items-center mb-3"><i
                                     class="material-icons colo mr-2">Next</i>Appointment</h6>
-                                    <table class="table">
-  <thead>
-    <tr>
-      
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Clinic Name</th>
-      <th scope="col">Cancel</th>
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($data as $i)
-                          @if($i->is_cancel_user==0 && $i->is_cancel_admin==0)
+                            <table class="table">
+                                <thead>
+                                    <tr>
 
-    <tr>
+                                        <th scope="col">DateTime</th>
+                                     
+                                        <th scope="col">Clinic Name</th>
+                                        <th scope="col">Cancel</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($data as $i)
+                                    @if($i->is_cancel_user==0 && $i->is_cancel_admin==0)
 
-      <td>{{$i->time_date}}</td>
-      <td>{{$i->time_detail}}</td>
-      <td>{{$i->clinic_name}}</td>
-      <td>
-      <form>
-					       <a  href="{{url('delete/id/'.$i->id)}}" type="submit" class="btn btn-danger" >Cancel</a>
-			             </form></td>
-    </tr>
-   
-    @endif
-                          @endforeach
-   
-  </tbody>
-</table>
+                                    <tr>
+
+                                        <td>{{$i->time_book}}</td>
+                                        
+                                        <td>{{$i->clinic_name}}</td>
+                                        <td>
+                                            <form>
+                                                <a href="{{url('delete/id/'.$i->id)}}" type="submit"
+                                                    class="btn btn-danger">Cancel</a>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    @endif
+                                    @endforeach
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -322,33 +330,33 @@
                         <div class="card-body">
                             <h6 class="d-flex align-items-center mb-3"><i
                                     class="material-icons colo mr-2">Canceled</i>Appointment</h6>
-                                    <table class="table">
-  <thead>
-    <tr>
-      
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Clinic Name</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($data as $i)
-                          @if($i->is_cancel_user==1 || $i->is_cancel_admin==1)
+                            <table class="table">
+                                <thead>
+                                    <tr>
 
-    <tr>
+                                        <th scope="col">DateTime</th>
+                                       
+                                        <th scope="col">Clinic Name</th>
 
-      <td>{{$i->time_date}}</td>
-      <td>{{$i->time_detail}}</td>
-      <td>{{$i->clinic_name}}</td>
-      
-    </tr>
-   
-    @endif
-                          @endforeach
-   
-  </tbody>
-</table>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($data as $i)
+                                    @if($i->is_cancel_user==1 || $i->is_cancel_admin==1)
+
+                                    <tr>
+
+                                        <td>{{$i->time_book}}</td>
+                                      
+                                        <td>{{$i->clinic_name}}</td>
+
+                                    </tr>
+
+                                    @endif
+                                    @endforeach
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -371,9 +379,10 @@ function show1() {
     document.getElementById('use').style.display = "block";
     document.getElementById('use1').style.display = "none";
 }
+
 function show3() {
     document.getElementById('myModal').style.display = "block";
-  
+
 }
 </script>
 @endsection

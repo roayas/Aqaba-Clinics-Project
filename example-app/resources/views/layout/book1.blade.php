@@ -15,12 +15,12 @@
 
 
 @section('content')
-{{Session::get('time')}}
+
 <div aria-label="breadcrumb" class="main-breadcrumb " style='opacity: 0;'>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/home">Home</a></li>
               
-              <li class="breadcrumb-item active" aria-current="page">Book/First Step/li>
+              <li class="breadcrumb-item active" aria-current="page">Book/First Step</li>
             </ol>
           </div>
 

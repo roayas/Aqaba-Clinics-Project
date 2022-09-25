@@ -14,8 +14,8 @@ class CreateBooksTable extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->bigIncrements('book_id');
-            $table->string('clinic_name');
+            $table->bigIncrements('id');
+            $table->string('clinic_name')->nullable();
             $table->string('doctor_name')->nullable();
             $table->integer('user_id')->nullable();
             $table->integer('clinic_id');
@@ -24,9 +24,12 @@ class CreateBooksTable extends Migration
             $table->string('user_id_num')->nullable();
             $table->string('user_name')->nullable();
             $table->string('user_lname')->nullable();
+            $table->string('user_email')->nullable();
             $table->integer('user_phone')->nullable();
             $table->date('user_dob')->nullable();
             $table->dateTime('time_book');
+            $table->date('time_date');
+            $table->time('time_detail');
             $table->string('admin_add')->nullable();
             $table->boolean('is_cancel_user')->default('0');
             $table->boolean('is_cancel_admin')->default('0');

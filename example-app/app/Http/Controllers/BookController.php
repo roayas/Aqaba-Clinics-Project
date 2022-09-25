@@ -10,24 +10,27 @@ use App\Models\Clinic;
 use App\Models\Book;
 use App\Models\TimeSchedule;
 use Session;
+use App\Mail\bookuser;
+use App\Mail\bookClinic;
+use Mail;
 
 class BookController extends Controller
 {
     //
-    public function searchAp(Request $request){
-        // dd(session()->all());
+    public function book1(Request $request){
         $request->validate([
             'date'=>'required|date|after:yesterday',
             'clinic'=>'required',
         ]);
         $date=$request->input('date');
+        // $date=Carbon::parse($date)->format('d-m-y');
+        
+        
         $clinic=$request->input('clinic');
-        $data1 =DB::table('time_schedules')
-        ->where('time_date', $date )-> where('clinic_id', $clinic)
+        $data1 =DB::table('books')
+        ->where('time_book', $date )-> where('clinic_id', $clinic)
         ->get();
-        $data2 =DB::table('clinics')
-        -> where('id', $clinic)
-        ->get();
+       
     
         $clinicName = Clinic::find($request->clinic);
         $clinicName= $clinicName->clinic_name;
@@ -36,77 +39,85 @@ class BookController extends Controller
         $request->session()->put('clinic', $request->clinic);
         return redirect("/book2/id/".$clinic."/date/".$date)->with('data1', $data1);
     }
+
+
  public function book2(Request $request){
     $time=$request->input('time');  
-    // dd($time);
     $request->session()->put('time', $time);  
   
   
       
-    return redirect('book'.'/#book');
+    return redirect('book3');
  }
 
 
  public function book3(Request $request){
     $request->validate([
-        'user_name'=>'required|alpha',
-        'user_lname'=>'required|alpha',
+        'user_name'=>'required|string',
+        'email'=>'required|email',
         'user_id_num'=>'required|numeric|digits:10',
         'user_phone'=>'required|numeric|digits:10',
         'note'=>'nullable',
     ]);
     if(Session::get('loginin')){
-        
-        $create=new TimeSchedule();
-        $create->clinic_id=Session::get('clinic');
-        $create->user_id=Auth::user()->id;
-        $create->time_detail=Session::get('time');
-        $create->time_date=Session::get('date');
-        $create->save();
-
         $book=new Book();
         $book->clinic_name=Session::get('clinicName');
         $book->clinic_id=Session::get('clinic');
         $book->user_id=Auth::user()->id;
         $date=Session::get('date');
         $time=Session::get('time');
+        $book->time_date=$date;
+        $book->time_detail=$time;
         $combinedDT = date('Y-m-d H:i:s', strtotime("$date $time"));
-       
         $book->time_book=$combinedDT;
         $book->user_id_num=$request->input('user_id_num');
         $book->user_name=$request->input('user_name');
-        $book->user_lname=$request->input('user_lname');
+        $book->email=$request->input('email');
         $book->user_phone=$request->input('user_phone');
         $book->note=$request->input('note');
-      
         $book->save();
-
+        $bookuser=[
+            'clinicName'=>Session::get('clinicName'),
+            'time'=> $combinedDT,
+            'user_name'=>$request->input('user_name'),
+            'user_id_num'=>$request->input('user_id_num'),
+            'user_phone'=>$request->input('user_phone'),
+            ];
+        $bookClinic=[
+            'clinicName'=>Session::get('clinicName'),
+            'time'=> $combinedDT,
+            'user_name'=>$request->input('user_name'),
+            'user_id_num'=>$request->input('user_id_num'),
+            'user_phone'=>$request->input('user_phone'),
+            'email'=>$request->input('email'),
+            ];
+    
+        $clinicEmail=Clinic::find(Session::get('clinic'));
+        $clinicEmail=$clinicEmail->clinic_email;
+ 
+            Mail::to($request->input('email'))->send(new bookuser($bookuser) );
+            Mail::to($clinicEmail)->send(new bookClinic($bookClinic) );
         $request->session()->forget('clinicName');
         $request->session()->forget('time');
         $request->session()->forget('date');
         $request->session()->forget('clinic');
         $request->session()->forget('user_name');
-        $request->session()->forget('user_lname');
+        $request->session()->forget('email');
         $request->session()->forget('user_id_num');
         $request->session()->forget('user_phone');
         $request->session()->forget('note');
         return redirect('thank');
     }else{
         $request->session()->put('user_name', $request->user_name);
-        $request->session()->put('user_lname', $request->user_lname);
+        $request->session()->put('email', $request->email);
         $request->session()->put('user_phone', $request->user_phone);
         $request->session()->put('note', $request->note);
         $request->session()->put('user_id_num', $request->user_id_num);
         $request->session()->put('path', '/book');
         return redirect('login');
     }
-  
-  
       
-    // return redirect('book'.'/#book');
  }
 
 
 }
-
-

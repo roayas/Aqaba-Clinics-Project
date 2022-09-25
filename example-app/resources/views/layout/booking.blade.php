@@ -47,10 +47,10 @@
                         <div class="row">
                         <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="name">First Name</label>
+                                    <label for="name"> Name</label>
                                     <input name="user_name" id="name" type="text" class="form-control" 
-                                    value="@if(Session::get('user_name')) {{Session::get('user_name')}}
-                                    @elseif( Session::get('loginin') ) {{  Auth::user()->name }} @endif">
+                                    value="@if(Session::get('user_name')) {{Session::get('user_name')}} {{Session::get('user_lname')}}
+                                    @elseif( Session::get('loginin') ) {{  Auth::user()->name }} {{  Auth::user()->user_lname }} @endif">
                                     @error('user_name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -59,10 +59,10 @@
 
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="name">Last Name</label>
-                                    <input name="user_lname" id="name" type="text" class="form-control" 
-                                    value="@if(Session::get('user_lname')) {{Session::get('user_lname')}} @elseif(  Session::get('loginin') ) {{  Auth::user()->user_lname }} @endif">
-                                    @error('user_lname')
+                                    <label for="name">Email</label>
+                                    <input name="email" id="name" type="text" class="form-control" 
+                                    value="@if(Session::get('email')) {{Session::get('email')}} @elseif(  Session::get('loginin') ) {{  Auth::user()->email }} @endif">
+                                    @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -104,7 +104,7 @@
                         </div>
                         <div class='text-end'>
                         <a class="btn  btn-main text-white btn-round-full mr-3"
-                        href="/book1"><i class="icofont-simple-left mr-2"></i>Back
+                        href="{{url('/book2/id/'.Session::get('clinic').'/date/'.Session::get('date'))}}"><i class="icofont-simple-left mr-2"></i>Back
                                 </a>
                             <button class="btn btn-main btn-round-full" href="{{ url('confirmation.html') }}">Make
                                 Appoinment</button>

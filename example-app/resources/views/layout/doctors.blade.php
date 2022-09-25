@@ -3,9 +3,18 @@
 
 @section('link')
 <!-- <link rel="stylesheet" href=" {{ asset('css/home.css') }} "> -->
+<style>
+  input {
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+</style>
 @endsection
 
 @section('content')
+
 <section class="page-title bg-1">
   <div class="overlay"></div>
   <div class="container">
@@ -42,15 +51,20 @@
 
       <div class=" text-center  mb-5  ">
 	        <div class="btn-group btn-group-toggle " data-toggle="buttons">
+            <div class="row">
+              <div class="col-3 my-2">
 	          <label class="btn active ">
 	            <input type="radio" name="shuffle-filter" value="all" checked="checked" />All Department
 	          </label>
-	          
+	          </div>
 			  @foreach($data2 as $i)
+        <div class="col-3 my-2">
 			  <label class="btn ">
 	            <input type="radio" name="shuffle-filter" value="cat{{$i->cat_id}}" />{{$i->cat_name}}
 	          </label>
+          </div>
 			  @endforeach
+      </div>
 	        </div>
       </div>
 
@@ -61,7 +75,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
+                @if($y->doctor_img)
 		               <img src="{{ asset('storage/img/'.$y->doctor_img) }}" alt="doctor-image" class="img-fluid w-100">
+                   @else
+                   <img  src="{{asset('img/person-icon.png')}}" alt="doctor-image" class="img-fluid w-100">
+                   @endif
 		            </div>
 	            </div>
 				
@@ -79,16 +97,24 @@
 </section>
 <!-- /portfolio -->
 <section class="section cta-page">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-7">
-				<div class="cta-content">
-					<div class="divider mb-4"></div>
-					<h2 class="mb-5 text-lg">We are pleased to offer you the <span class="title-color">chance to have the healthy</span></h2>
-					<a href="{{ url('appoinment.html') }}" class="btn btn-main-2 btn-round-full">Get appoinment<i class="icofont-simple-right  ml-2"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="cta-content">
+                    <div class="divider mb-4"></div>
+                    <h2 class="mb-5 text-lg">are you a doctor?
+                        <span class="title-color">own a clinic?</span>
+                    </h2>
+                    <h3>Join now the largest medical community in Aqaba</h3>
+                    <h6>If you want to join the medical community and benefit from the many services that the site
+                        provides for doctors and clinics..
+                        Don't hesitate and start now to sign up</h6>
+                    <a href="{{ url('/logAdmin') }}" class="btn btn-main-2 btn-round-full">Join Now<i
+                            class="icofont-simple-right  ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
 @endsection

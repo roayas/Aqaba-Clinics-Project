@@ -1,0 +1,10 @@
+.navbar-toggler-icon {
+
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background-image: var(--bs-navbar-toggler-icon-bg);
+    background-size: 100% 100%;
+}

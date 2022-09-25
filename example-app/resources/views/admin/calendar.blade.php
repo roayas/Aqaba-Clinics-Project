@@ -2,14 +2,15 @@
 @section ('title', 'calender')
 
 @section('link')
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<style>
+  .fc-toolbar .fc-state-active, .fc-toolbar .ui-state-active {
+    z-index: 0;
+}
+</style>
 @endsection
 
 @section('content')
@@ -80,36 +81,9 @@
                 selectable:true,
                 selectHelper:true,
                 select: function(start, allDays){
-                    $('#bookingModal').modal('toggle');
+                    
 
-                    $('#saveBtn').click(function() {
-                        var title = $('#title').val();
-                        var start_date = moment(start).format('YYYY-MM-DD');
-                       
-                        $.ajax({
-                            url:"{{ route('calendar.addBook') }}",
-                            type:"POST",
-                            dataType:'json',
-                            data:{ title, start_date  },
-                            success:function(response)
-                            {
-                                $('#bookingModal').modal('hide')
-                                $('#calendar').fullCalendar('renderEvent', {
-                                    'title': response.title,
-                                    'start' : response.start,
-                              
-                                });
-                            },
-                            error:function(error)
-                            {
-                                if(error.responseJSON.errors) {
-                                    $('#titleError').html(error.responseJSON.errors.title);
-                                }
-                            },
-                        });
-
-
-                    })
+                   
                 }
         })
 

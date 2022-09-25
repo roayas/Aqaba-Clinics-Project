@@ -1626,7 +1626,8 @@ a[data-toggle="collapse"] {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #fff;
+    background: #15283c;
+
     text-shadow: none;
     top: 0;
     opacity: 1;
@@ -1635,7 +1636,7 @@ a[data-toggle="collapse"] {
 #testimonial_slider.carousel .carousel-control i {
     font-size: 20px;
     margin-right: 2px;
-    color: #15283c;
+    color: #fff;
     margin-top: -2px;
 }
 
@@ -2169,7 +2170,7 @@ i.icon {
 }
 
 .tabbar .nav-tabs {
-    border-bottom: solid #eee 1px;
+    border-bottom: solid #eee 3px;
 }
 
 .tabbar nav div.nav-tabs .nav-link {
@@ -2183,9 +2184,9 @@ i.icon {
 /** tabbar style 2 **/
 
 .tab_style2 .tabbar nav div.nav-tabs .nav-link.active {
-    background: #ff5722;
+    background: #53c1b0;
     color: #fff;
-    border-color: #ff5722;
+    border-color: #53c1b0;
 }
 
 
@@ -3238,7 +3239,33 @@ td ul.list-inline li {
     padding: 6px 15px;
     border-radius: 50px;
 }
-
+.btnMain{
+    background: #53c1b0;
+    color: #fff;
+   
+    border: none;
+    font-weight: 400;
+    padding: 6px 15px;
+    border-radius: 50px; 
+}
+.btnMa{
+    background:none ;
+    color: #000;
+   font-size: 20px;
+    border: 1px solid #53c1b0;
+    font-weight: 400;
+    padding: 6px 15px;
+    border-radius: 50px; 
+}
+.btnDen{
+    background: #dc3545;
+    color: #fff;
+   
+    border: none;
+    font-weight: 400;
+    padding: 6px 15px;
+    border-radius: 50px; 
+}
 table.projects tr td:first-child {
     text-align: center;
 }

@@ -15,8 +15,9 @@ class CreateInsuranceasTable extends Migration
     {
         Schema::create('insuranceas', function (Blueprint $table) {
             $table->bigIncrements('ins_id');
-            $table->integer('clinic_id');
+            $table->integer('clinic_id')->nullable();
             $table->string('ins_name');
+            $table->string('ins_img');
             $table->timestamps();
         });
     }

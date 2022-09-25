@@ -6,8 +6,14 @@ use App\Models\c;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Clinic;
 use App\Models\TimeSchedule;
 use Carbon\Carbon;
+use App\Models\Book;
+use Illuminate\Support\Facades\Hash;
+use App\Mail\cancelUser;
+use App\Mail\cancelClinic;
+use Mail;
 
 class UserController extends Controller
 {
@@ -108,9 +114,35 @@ class UserController extends Controller
        }
 
        public function cancelApp($id){
-        $del=TimeSchedule::find($id);
+      
+        $del=Book::find($id);
         $del-> is_cancel_user =1;
         $del->update();
+
+
+        $clinicEmail=Clinic::find($del->clinic_id);
+        $clinicEmail=$clinicEmail->clinic_email;
+
+        $cancelUser=[
+          'clinicName'=>$del->clinic_name,
+          'time'=> $del->time_book,
+          'user_name'=>$del->user_name,
+          'user_id_num'=>$del->user_id_num,
+          'user_phone'=>$del->user_phone,
+          'email'=>$del->email,
+          ];
+          Mail::to($del->email)->send(new cancelUser($cancelUser) );
+
+          $cancelClinic=[
+          'clinicName'=>$del->clinic_name,
+          'time'=> $del->time_book,
+          'user_name'=>$del->user_name,
+          'user_id_num'=>$del->user_id_num,
+          'user_phone'=>$del->user_phone,
+          'email'=>$del->email,
+            ];
+          Mail::to($clinicEmail)->send(new cancelClinic($cancelClinic) );
+
         return redirect('/user')->with('message3','The appointment has been Canceled successfully');
     
     }
@@ -157,6 +189,27 @@ class UserController extends Controller
          return redirect('/user')->with('message1','The data has been updated successfully');
        
        }
+
+       public function changePassword(Request $request){
+        $data=Auth::user();
+        $pass= $request->input('old_pass');
+  
+        if (Hash::check($pass, $data->password)) {
+        
+          $request->validate([
+            'new_pass'=>'required|string|min:8',
+            'con_pass'=>'required_with:new_pass|same:new_pass|min:8',
+          ]);
+          $data->password= Hash::make($request->input('new_pass'));
+          $data->update();
+          return redirect('/changePasswordUser')->with('message2','password is updated successfully');    
+      }
+      else
+      {
+        return redirect('/changePasswordUser')->with('message','password is wrong');
+      }
+      
+      }
 
 
        

@@ -252,7 +252,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   width: 100%;
   height: 100%;
   opacity: 0.9;
-  background: #1c1b38;
+  
 }
 
 .overly-2 {
@@ -402,7 +402,7 @@ a:focus {
   z-index: 99;
   width: 100%; 
   background:transparent;
-  background-color: rgba(28, 27, 56, 0.7);
+  background-color: rgb(141 141 155 / 90%);
   color:#fff;
  
 }
@@ -435,15 +435,17 @@ a:focus {
   background-color: rgba(54,84,99,0.5);
   border-radius: 10px;
 }
-
+.color{
+  color:#53c1b0;
+}
 /* .dropdown-menu li a{
   color:#000
   
 } */
 .navbar a{
   color:#fff;
-  margin-right: 10px;
- font-size: large;
+
+ font-family: "Exo", sans-serif;
    
 }
 .bb{
@@ -916,7 +918,7 @@ a:focus {
 }
 
 .cta-page {
-  background: url("../img/bg/banner.jpg") no-repeat;
+  background: url("../img/bg/bg-2.jpg") no-repeat;
   background-size: cover;
   position: relative;
 }

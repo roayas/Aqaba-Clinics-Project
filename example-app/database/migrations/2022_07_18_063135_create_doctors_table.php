@@ -16,7 +16,8 @@ class CreateDoctorsTable extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('doctor_name');
-            $table->string('doctor_email')->unique();
+            $table->string('practice_certificate');
+            $table->string('doctor_email');
             $table->string('doctor_phone');
             $table->string('cat_id');
             $table->string('cat_name');
@@ -24,6 +25,7 @@ class CreateDoctorsTable extends Migration
             $table->text('doctor_des')->nullable();
             // $table->time('time_available')->nullable();
             $table->integer('clinic_id');
+            $table->boolean('is_delete')->default('0');
             $table->timestamps();
         });
     }

@@ -16,9 +16,11 @@ class CreateClinicsTable extends Migration
         Schema::create('clinics', function (Blueprint $table) {
             $table->bigIncrements('clinic_id');
             $table->string('clinic_name');
+            $table->string('clinic_license')->nullable();
             $table->string('clinic_email')->unique();
-            $table->integer('clinic_phone');
-            $table->string('cat_id');
+            $table->string('clinic_phone')->nullable();
+            $table->string('pass');
+            $table->string('cat_id')->nullable();
             $table->string('clinic_img')->nullable();
             $table->integer('commercial_register')->nullable();
             $table->string('clinic_short_des')->nullable();
@@ -26,8 +28,10 @@ class CreateClinicsTable extends Migration
             $table->string('clinic_bdes')->nullable();
             $table->time('time_start')->nullable();
             $table->time('time_end')->nullable();
-            // $table->time('time_available')->nullable();
-            // $table->date('time_available')->nullable();
+            $table->string('day_1_off')->nullable();
+            $table->string('day_2_off')->nullable();
+            $table->string('app_length')->nullable();
+            $table->decimal('iteration', $precision = 8, $scale = 4)->nullable();
             $table->string('clinic_location')->nullable();
             $table->boolean('is_accepted')->default('0');
 

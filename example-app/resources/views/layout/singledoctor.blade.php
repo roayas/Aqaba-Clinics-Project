@@ -12,9 +12,9 @@
       <div class="col-md-12">
         <div class="block text-center">
           <span class="text-white">Doctor Details</span>
-          <h1 class="text-capitalize mb-5 text-lg">{{$data->doctor_name}}</h1>
+          <h1 class="text-capitalize mb-3 text-lg">{{$data->doctor_name}}</h1>
 		  @foreach($data5 as $t)
-		  <h3 class="text-capitalize mb-5 text-lg text-white">{{$t->clinic_name}}</h3>
+		  <h3 class="text-capitalize mb-5 text-white">{{$t->clinic_name}}</h3>
 		  @endforeach
 
           <!-- <ul class="list-inline breadcumb-nav">
@@ -34,8 +34,11 @@
 		<div class="row">
 			<div class="col-lg-4 col-md-6">
 				<div class="doctor-img-block">
+					@if($data->doctor_img)
 					<img src="{{ asset('storage/img/'.$data->doctor_img) }}" alt="" class="img-fluid w-100">
-
+					@else
+					<img  src="{{asset('img/person-icon.png')}}" alt="" class="img-fluid w-100">
+					@endif
 					<div class="info-block mt-4">
 						<h4 class="mb-0">{{$data->doctor_name}}</h4>
 						<p>{{$data->cat_name}}</p>
@@ -55,7 +58,11 @@
 				<div class="doctor-details mt-4 mt-lg-0">
 					<h2 class="text-md">Introducing to myself</h2>
 					<div class="divider my-4"></div>
-					<p>{{$data->doctor_des}}</p>
+					@if($data->doctor_des)
+					<p>{{$data->doctor_des}} </p>
+					@else
+					<div style='margin-top:60%'></div>
+					@endif
 					@foreach ($data5 as $r)
 					<form  >
 					<a href="{{url('appDoctor/id/'.$r->id)}}" class="btn btn-main-2 btn-round-full mt-3">Make an Appoinment<i class="icofont-simple-right ml-2  "></i></a></form>

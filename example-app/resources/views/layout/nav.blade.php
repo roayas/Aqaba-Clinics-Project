@@ -66,7 +66,10 @@
                     <ul class="navbar-nav m-auto">
 
                         <li class="nav-item ">
-                            <a class="nav-link" href="/home">Home</a>
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/book1">Appointment</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="/clinics" id="dropdown02"
@@ -75,14 +78,12 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdown02">
                                 <li><a class="dropdown-item" href="/clinics">Clinics</a></li>
                                 <li><a class="dropdown-item" href="/doctors">Doctors</a></li>
-                                <li><a class="dropdown-item" href="/book1">Appointment</a></li>
+                                <!-- <li><a class="dropdown-item" href="/book1">Appointment</a></li> -->
                             </ul>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="/service">Service</a>
-                        </li>
+                      
                         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/">Join </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logAdmin">Join </a></li>
                        
                         <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                     </ul>
@@ -93,13 +94,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link bb" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link " href="{{ route('login') }}"><i class="fa-solid fa-arrow-right-to-bracket fa-xl color mt-3 mr-2"> </i>  {{ __('Login') }}</a>
                         </li>
                         @endif
-
+                        
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link dd" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <!-- <a class="nav-link " href="{{ route('register') }}"><i class="fa-solid fa-user-plus mr-1  color"></i>{{ __('Register') }}</a> -->
                         </li>
                         @endif
                         @else
@@ -112,6 +113,9 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item " href="/user"   >
                                     {{ __('Account') }}
+                                </a>
+                                <a class="dropdown-item " href="/changePasswordUser"   >
+                                    {{ __('Change Password') }}
                                 </a>
                                 <a class="dropdown-item " href="{{ route('logout') }}"  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" >
@@ -129,56 +133,7 @@
                 </div>
             </div>
         </nav>
-        <!-- 
-        <nav class="navbar navbar-expand-lg navigation" id="navbar">
-            <div class="container-fluid">
-                <a class="ontainer-fluid" href="">
-                    <img src="{{asset('img/logo.png')}}" alt="" class="img-fluid" width="300px">
-                </a>
-
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
-                    aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="icofont-navigation-menu"></span>
-                </button>
-
-                <div class="collapse navbar-collapse justify-content-center" id="navbarmain">
-                    <ul class="navbar-nav ">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="department.html" id="dropdown02"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clinics <i
-                                    class="icofont-thin-down"></i></a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                                <li><a class="dropdown-item" href="department.html">Clinics</a></li>
-                                <li><a class="dropdown-item" href="department-single.html">Doctors</a></li>
-                                <li><a class="dropdown-item" href="department-single.html">Appointment</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Service</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="service.html">Join Us</a></li>
-                        <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a></li>
-
-						<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-					</ul>
-			  	</li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    </ul>
-
-            
-                <div class="navbar-nav justify-content-end" id="navbarmain">
-                    <a href="#" class="nav-item nav-link">Login</a>
-                </div>
-    </div>
-            </div>
-        </nav> -->
+    
     </header>
 
     <!-- <script>

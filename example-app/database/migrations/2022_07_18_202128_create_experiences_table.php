@@ -14,7 +14,7 @@ class CreateExperiencesTable extends Migration
     public function up()
     {
         Schema::create('experiences', function (Blueprint $table) {
-            $table->bigIncrements('exp_id');
+            $table->bigIncrements('id');
             $table->integer('doctor_id');
             $table->text('exp_name');
             $table->timestamps();
