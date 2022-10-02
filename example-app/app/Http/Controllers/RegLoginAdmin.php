@@ -65,6 +65,7 @@ class RegLoginAdmin extends Controller
             $request->session()->put('clinic_location', $data->clinic_location);
             $request->session()->put('time_start', $data->time_start);
             $request->session()->put('time_end', $data->time_end);
+            // dd(Session::get('id'));
 
           return  redirect('/main');
         }

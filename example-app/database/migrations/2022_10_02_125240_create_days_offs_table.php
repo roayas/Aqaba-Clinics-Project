@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DaysOff extends Migration
+class CreateDaysOffsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,13 @@ class DaysOff extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('days_offs', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->date('date');
+            $table->string('title');
+            $table->integer('clinic_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,14 +29,6 @@ class DaysOff extends Migration
      */
     public function down()
     {
-        //
-        $table->bigIncrements('id');
-        $table->date('date');
-        $table->string('title');
-        $table->integer('clinic_id');
-        $table->timestamps();
+        Schema::dropIfExists('days_offs');
     }
-
-
-    
 }

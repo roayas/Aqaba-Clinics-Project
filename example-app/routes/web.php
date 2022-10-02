@@ -86,7 +86,7 @@ Route::get('/book1',[ViewController::class,'book1']);
 Route::post('/book1',[BookController::class,'book1']);
 Route::get('/book2/id/{clinic_id}/date/{date}',[ViewController::class,'book2'])->middleware('book1');
 Route::post('/book2',[BookController::class,'book2']);
-Route::get('/book3',[ViewController::class,'book3'])->middleware('book1')->middleware('verified');
+Route::get('/book3',[ViewController::class,'book3'])->middleware('book1');
 Route::post('/book3',[BookController::class,'book3']);
 Route::get('/thank',[ViewController::class,'thank']);
 Route::get('/service',[ViewController::class,'service']);

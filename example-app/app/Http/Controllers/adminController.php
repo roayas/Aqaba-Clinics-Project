@@ -143,8 +143,8 @@ class adminController extends Controller
             $clinicEmail=Clinic::find(Session::get('id'));
             $clinicEmail=$clinicEmail->clinic_email;
      
-                Mail::to($user->email)->send(new bookuser($bookuser) );
-                Mail::to($clinicEmail)->send(new bookClinic($bookClinic) );
+                // Mail::to($user->email)->send(new bookuser($bookuser) );
+                // Mail::to($clinicEmail)->send(new bookClinic($bookClinic) );
         }
         else{
         $book->admin_add=$request->input('admin_add');
@@ -153,7 +153,7 @@ class adminController extends Controller
         $date = Carbon::parse($date)->format("d-m-Y") ;
         $arr=['date'=>$date, 'time'=>$time];
         $json = json_encode($arr);
-        $book->try=$json;
+        // $book->try=$json;
         $book->save();
 
         $request->session()->forget('datebook');
@@ -201,7 +201,7 @@ class adminController extends Controller
           'user_phone'=>$del->user_phone,
           'email'=>$del->email,
             ];
-          Mail::to($clinicEmail)->send(new cancelClinic($cancelClinic) );
+        //   Mail::to($clinicEmail)->send(new cancelClinic($cancelClinic) );
 
         return redirect('/deletedebook')->with('message','The appointment has been Canceled successfully');
     
@@ -280,9 +280,10 @@ class adminController extends Controller
             $id_cat=$cat->id; 
         }
          $clinic->clinic_name=$request->input('clinic_name');
+         if($request->clinic_license){
          $FileName =  time().'-'.$clinic->clinic_name . '.'.$request->clinic_license->extension();
          $file= $request->clinic_license->storeAs('img', $FileName , 'public');
-         $clinic->clinic_license =$FileName;
+         $clinic->clinic_license =$FileName;}
          $clinic->clinic_email=$request->input('clinic_email');
          $clinic->clinic_phone=$request->input('clinic_phone');
          $clinic->commercial_register=$request->input('commercial_register');

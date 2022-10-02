@@ -60,6 +60,7 @@ class BookController extends Controller
         'note'=>'nullable',
     ]);
     if(Session::get('loginin')){
+        // dd(Session::get('loginin'));
         $book=new Book();
         $book->clinic_name=Session::get('clinicName');
         $book->clinic_id=Session::get('clinic');
@@ -72,7 +73,7 @@ class BookController extends Controller
         $book->time_book=$combinedDT;
         $book->user_id_num=$request->input('user_id_num');
         $book->user_name=$request->input('user_name');
-        $book->email=$request->input('email');
+        $book->user_email=$request->input('email');
         $book->user_phone=$request->input('user_phone');
         $book->note=$request->input('note');
         $book->save();
@@ -95,8 +96,8 @@ class BookController extends Controller
         $clinicEmail=Clinic::find(Session::get('clinic'));
         $clinicEmail=$clinicEmail->clinic_email;
  
-            Mail::to($request->input('email'))->send(new bookuser($bookuser) );
-            Mail::to($clinicEmail)->send(new bookClinic($bookClinic) );
+            // Mail::to($request->input('email'))->send(new bookuser($bookuser) );
+            // Mail::to($clinicEmail)->send(new bookClinic($bookClinic) );
         $request->session()->forget('clinicName');
         $request->session()->forget('time');
         $request->session()->forget('date');
@@ -114,6 +115,7 @@ class BookController extends Controller
         $request->session()->put('note', $request->note);
         $request->session()->put('user_id_num', $request->user_id_num);
         $request->session()->put('path', '/book');
+        // dd(Session::get('path'));
         return redirect('login');
     }
       

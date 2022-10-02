@@ -48,8 +48,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            @if(Auth::user()->user_img)
-                            <img src="{{asset('/storage/img/'.Auth::user()->user_img) }}" alt="Admin"
+                            @if(Auth::user()->img)
+                            <img src="{{asset('/storage/img/'.Auth::user()->img) }}" alt="Admin"
                                 class="rounded-circle" height="150" width="150">
                             <!-- <a href="/addItem"> edit</a> -->
                             @else
@@ -263,7 +263,7 @@
                                     @if(Auth::user()->blood_type)
                                     <option selected disable>{{Auth::user()->blood_type}}</option>
                                     @else
-                                    <option selected disable>Choose...</option>
+                                    <option selected disable value=''>Choose...</option>
                                     @endif
                                     <option value='A+'>A+</option>
                                     <option value='A-'>A-</option>

@@ -108,7 +108,7 @@ class UserController extends Controller
 
          $FileName =  time().'-'.$data->name . '.'.$request->img->extension();
          $file= $request->img->storeAs('img', $FileName , 'public');
-         $data-> user_img =$FileName; /// cloum name
+         $data-> img =$FileName; /// cloum name
          $data->update();
          return redirect('user');
        }

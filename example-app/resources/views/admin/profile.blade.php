@@ -59,6 +59,11 @@
                                                 {{session('message')}}
                                             </div>
                                             @endif
+                                            @if (session('message1'))
+                                            <div class="alert alert-success mb-5 " role="alert">
+                                                {{session('message1')}}
+                                            </div>
+                                            @endif
                                             @if (session('message2'))
                                             <div class="alert alert-success mb-5 " role="alert">
                                                 {{session('message2')}}
@@ -85,7 +90,7 @@
                                                         <div class="profile_img">
                                                             @if(isset($data->clinic_img))
                                                             <img width="180" class="rounded-circle"
-                                                            src="{{asset('/storage/img/'.$data->clinic_img)}}"
+                                                            src="{{asset('storage/img/'.$data->clinic_img)}}"
                                                                 alt="#" />
                                                                 @else
                                                                 <img width="180" class="rounded-circle"
@@ -377,7 +382,7 @@
                                                                             <tr>
 
                                                                                 <td>{{$b->service_name}}</td>
-                                                                                <td><a href="{{url('deleteService/id/'.$b->id)}}"
+                                                                                <td><a href="{{url('deleteService/id/'.$b->clinic_id)}}"
                                                                                         class='btn btnDen'>Delete<a>
                                                                                 </td>
                                                                             </tr>
