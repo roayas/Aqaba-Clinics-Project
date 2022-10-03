@@ -54,7 +54,7 @@ use Carbon\Carbon;
                                         <td>{{$i->user_id_num}}</td>
 
                                         <td>{{$i->user_phone}}</td>
-                                        <td><a href="{{url('singleuser/id/'.$i->id)}}"  class='btn btnMain'>Details</a></td>
+                                        <td><a href="{{url('singleuser/id/'.$i->user_id)}}"  class='btn btnMain'>Details</a></td>
                                     </tr>
                                  
                                     @endforeach
